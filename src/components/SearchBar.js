@@ -25,8 +25,10 @@ class SearchBar extends React.Component {
         event.preventDefault();
 
         // arrow function automatically bind this function
-        console.log(this.state.term);
-    }
+        // console.log(this.state.term);
+
+        this.props.onSubmit(this.state.term);
+    };
 
     // this.onInputChange() -> this method will be called when component is rendered.
     // if we don't want to do this, we should use it without parentheses
