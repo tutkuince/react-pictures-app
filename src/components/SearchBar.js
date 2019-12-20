@@ -2,8 +2,11 @@ import React from 'react';
 
 class SearchBar extends React.Component {
 
-    onInputChange(event) {
-        console.log(event.target.value);
+    state = {term: ''};
+
+    onFormSubmit(event) {
+        // this is prevent automatically refreshing the page.
+        event.preventDefault();
     }
 
     // this.onInputChange() -> this method will be called when component is rendered.
@@ -11,11 +14,12 @@ class SearchBar extends React.Component {
     render() {
         return (
             <div className="ui segment">
-                <form action="" className="ui form">
+                <form onSubmit={this.onFormSubmit} action="" className="ui form">
                     <div className="field">
                         <label htmlFor="search">Image Search</label>
                         <input type="text"
-                               onChange={this.onInputChange}
+                               onChange={(e) => {this.setState({term: e.target.value})}}
+                               value={this.state.term}
                                name="search"
                                id="search"
                         />
